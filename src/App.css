@@ -16,9 +16,13 @@
 
  
 
-.task-form {
+.task-form, 
+
+.login-form {
 
   display: flex;
+
+  flex-wrap: wrap;
 
   gap: 8px;
 
@@ -79,5 +83,28 @@
   padding: 8px 14px;
 
   font: inherit;
+
+}
+
+
+.who {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+}
+
+ 
+
+.error {
+
+  width: 100%;
+
+  margin: 0;
+
+  color: #d03b2f;
 
 }
