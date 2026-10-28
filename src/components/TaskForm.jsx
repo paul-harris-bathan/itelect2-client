@@ -5,9 +5,10 @@ function TaskForm({ onAdd }) {
 
   const [title, setTitle] = useState("");
 
+  const [error, setError] = useState("");
  
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
 
     e.preventDefault();
 
@@ -15,9 +16,19 @@ function TaskForm({ onAdd }) {
 
     if (trimmed === "") return;
 
-    onAdd(trimmed);
+    try {
 
-    setTitle("");
+      await onAdd(trimmed);
+
+      setTitle("");
+
+      setError("");
+
+    } catch (err) {
+
+      setError(err.message);
+
+    }
 
   }
     return (
@@ -36,6 +47,9 @@ function TaskForm({ onAdd }) {
 
       <button type="submit">Add task</button>
 
+      {error && <p className="error">{error}</p>}
+
+
     </form>
 
   );
@@ -43,5 +57,4 @@ function TaskForm({ onAdd }) {
 }
 
  
-
 export default TaskForm;
